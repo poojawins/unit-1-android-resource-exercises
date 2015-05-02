@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.TouchUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -107,25 +108,67 @@ public class ActivityTest extends ActivityInstrumentationTestCase2<ResourceExerc
 
     }
 
-    public void testLayout() {
-        //Update EditText ID
-        //Update Button ID
-        //Update TextView ID
-        //Update height/width
-
-        //Update EditText.text
-        //Update Button.text
-        //Update TextView.text
-
+    public void testParentLayout() {
         int parentLayoutId = mActivity.getResources().getIdentifier("exercise_parent_layout", "id", mActivity.getPackageName());
 
         assertTrue("Parent Layout not found", parentLayoutId > 0);
         View parentLayout = mActivity.findViewById(parentLayoutId);
         assertTrue("Parent Layout not a LinearLayout", parentLayout instanceof LinearLayout);
+    }
 
-        int editTextId = mActivity.getResources().getIdentifier("exercise_edit_text", "id", mActivity.getPackageName());
+    public void testEditText() {
+        int editTextId = mActivity.getResources().getIdentifier("exercise_edit_text_input", "id", mActivity.getPackageName());
+
+        assertTrue("EditText ID not found", editTextId > 0);
+
+        EditText et = (EditText) mActivity.findViewById(editTextId);
+
+        assertNotNull("EditText was not found", et);
+
+        assertEquals(WindowManager.LayoutParams.MATCH_PARENT, et.getLayoutParams().height);
+        assertEquals(WindowManager.LayoutParams.MATCH_PARENT, et.getLayoutParams().width);
+    }
+
+    public void testButton() {
         int buttonId = mActivity.getResources().getIdentifier("exercise_button", "id", mActivity.getPackageName());
-        int textViewId = mActivity.getResources().getIdentifier("exercise_text_view", "id", mActivity.getPackageName());
+
+        assertTrue("Button ID not found", buttonId > 0);
+
+        Button button = (Button) mActivity.findViewById(buttonId);
+
+        assertNotNull("Button was not found", button);
+
+        assertEquals(WindowManager.LayoutParams.MATCH_PARENT, button.getLayoutParams().height);
+        assertEquals(WindowManager.LayoutParams.MATCH_PARENT, button.getLayoutParams().width);
+        assertEquals("OK", button.getText());
+    }
+
+    public void testTextView() {
+        int textViewId = mActivity.getResources().getIdentifier("exercise_text_view_grade", "id", mActivity.getPackageName());
+
+        assertTrue("TextView ID not found", textViewId > 0);
+
+        TextView tv = (TextView) mActivity.findViewById(textViewId);
+
+        assertNotNull("TextView was not found", tv);
+
+        assertEquals(WindowManager.LayoutParams.WRAP_CONTENT, tv.getLayoutParams().height);
+        assertEquals(WindowManager.LayoutParams.WRAP_CONTENT, tv.getLayoutParams().width);
+        assertEquals("N/A", tv.getText());
+    }
+
+    public void testGradeCalculator() {
+        // Make sure the grade calculator works correctly
+        // 100   -> A+
+        // 90-99 -> A
+        // 80-89 -> B
+        // 70-79 -> C
+        // 65-69 -> D
+        // 0-64  -> F
+
+        int editTextId = mActivity.getResources().getIdentifier("exercise_edit_text_input", "id", mActivity.getPackageName());
+        int buttonId = mActivity.getResources().getIdentifier("exercise_button", "id", mActivity.getPackageName());
+        int textViewId = mActivity.getResources().getIdentifier("exercise_text_view_grade", "id", mActivity.getPackageName());
 
         assertTrue("EditText ID not found", editTextId > 0);
         assertTrue("Button ID not found", buttonId > 0);
@@ -139,13 +182,9 @@ public class ActivityTest extends ActivityInstrumentationTestCase2<ResourceExerc
         assertNotNull("Button was not found", button);
         assertNotNull("TextView was not found", tv);
 
-        assertEquals(WindowManager.LayoutParams.MATCH_PARENT, tv.getLayoutParams().height);
-        assertEquals(WindowManager.LayoutParams.MATCH_PARENT, tv.getLayoutParams().width);
-        assertEquals("Exercise Test", tv.getText());
-
-        // et.fill("59")
-        // button.clickView()
-        // assertEquals("F", tv.getText());
+        et.setText("59");
+        button.callOnClick();
+        assertEquals("F", tv.getText());
 
         // et.fill("68")
         // button.clickView()

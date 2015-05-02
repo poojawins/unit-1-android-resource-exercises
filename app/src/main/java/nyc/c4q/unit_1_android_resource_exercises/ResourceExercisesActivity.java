@@ -15,7 +15,6 @@ public class ResourceExercisesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resource_exercises);
-        Log.i(TAG, "lol");
     }
 
     @Override
