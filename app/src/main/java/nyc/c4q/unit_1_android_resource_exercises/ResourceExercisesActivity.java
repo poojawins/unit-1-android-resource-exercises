@@ -38,4 +38,6 @@ public class ResourceExercisesActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

@@ -2,5 +2,6 @@
     <string name="app_name">unit-1-android-resource-exercises</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="im_sorry_dave">I\'m sorry Dave, I\'m afraid I can\'t let you do that.</string>
     <string name="action_settings">Settings</string>
 </resources>

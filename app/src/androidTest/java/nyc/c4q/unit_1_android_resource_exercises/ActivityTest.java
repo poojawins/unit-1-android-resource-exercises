@@ -157,56 +157,56 @@ public class ActivityTest extends ActivityInstrumentationTestCase2<ResourceExerc
         assertEquals("N/A", tv.getText());
     }
 
-    public void testGradeCalculator() {
-        // Make sure the grade calculator works correctly
-        // 100   -> A+
-        // 90-99 -> A
-        // 80-89 -> B
-        // 70-79 -> C
-        // 65-69 -> D
-        // 0-64  -> F
-
-        int editTextId = mActivity.getResources().getIdentifier("exercise_edit_text_input", "id", mActivity.getPackageName());
-        int buttonId = mActivity.getResources().getIdentifier("exercise_button", "id", mActivity.getPackageName());
-        int textViewId = mActivity.getResources().getIdentifier("exercise_text_view_grade", "id", mActivity.getPackageName());
-
-        assertTrue("EditText ID not found", editTextId > 0);
-        assertTrue("Button ID not found", buttonId > 0);
-        assertTrue("TextView ID not found", textViewId > 0);
-
-        EditText et = (EditText) mActivity.findViewById(editTextId);
-        Button button = (Button) mActivity.findViewById(buttonId);
-        TextView tv = (TextView) mActivity.findViewById(textViewId);
-
-        assertNotNull("EditText was not found", et);
-        assertNotNull("Button was not found", button);
-        assertNotNull("TextView was not found", tv);
-
-        et.setText("59");
-        button.callOnClick();
-        assertEquals("F", tv.getText());
-
-        // et.fill("68")
-        // button.clickView()
-        // assertEquals("D", tv.getText());
-
-        // et.fill("75")
-        // button.clickView()
-        // assertEquals("C", tv.getText());
-
-        // et.fill("86")
-        // button.clickView()
-        // assertEquals("B", tv.getText());
-
-        // et.fill("95")
-        // button.clickView()
-        // assertEquals("A", tv.getText());
-
-        // et.fill("100")
-        // button.clickView()
-        // assertEquals("A+", tv.getText());
-
-    }
+//    public void testGradeCalculator() {
+//        // Make sure the grade calculator works correctly
+//        // 100   -> A+
+//        // 90-99 -> A
+//        // 80-89 -> B
+//        // 70-79 -> C
+//        // 65-69 -> D
+//        // 0-64  -> F
+//
+//        int editTextId = mActivity.getResources().getIdentifier("exercise_edit_text_input", "id", mActivity.getPackageName());
+//        int buttonId = mActivity.getResources().getIdentifier("exercise_button", "id", mActivity.getPackageName());
+//        int textViewId = mActivity.getResources().getIdentifier("exercise_text_view_grade", "id", mActivity.getPackageName());
+//
+//        assertTrue("EditText ID not found", editTextId > 0);
+//        assertTrue("Button ID not found", buttonId > 0);
+//        assertTrue("TextView ID not found", textViewId > 0);
+//
+//        EditText et = (EditText) mActivity.findViewById(editTextId);
+//        Button button = (Button) mActivity.findViewById(buttonId);
+//        TextView tv = (TextView) mActivity.findViewById(textViewId);
+//
+//        assertNotNull("EditText was not found", et);
+//        assertNotNull("Button was not found", button);
+//        assertNotNull("TextView was not found", tv);
+//
+//        et.setText("59");
+//        button.callOnClick();
+//        assertEquals("F", tv.getText());
+//
+//        // et.fill("68")
+//        // button.clickView()
+//        // assertEquals("D", tv.getText());
+//
+//        // et.fill("75")
+//        // button.clickView()
+//        // assertEquals("C", tv.getText());
+//
+//        // et.fill("86")
+//        // button.clickView()
+//        // assertEquals("B", tv.getText());
+//
+//        // et.fill("95")
+//        // button.clickView()
+//        // assertEquals("A", tv.getText());
+//
+//        // et.fill("100")
+//        // button.clickView()
+//        // assertEquals("A+", tv.getText());
+//
+//    }
 
     public void testLayoutDensity() {
         // hdpi
